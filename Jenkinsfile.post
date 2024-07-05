@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage('stage 1') {
+            steps {
+                sh 'echo stage 1'
+            }
+        }
+        stage('stage 2') {
+            steps {
+                sh './odd-timestamp.sh'
+            }
+        }
+        stage('stage 3') {
+            steps {
+                sh 'echo stage 3'
+            }
+        }
+    }
+    post {
+        always {
+            echo "this will always run"
+        }
+        success {
+            echo "this will run on success"
+        }
+        failure {
+            echo "this will run on failure"
+        }
+        unstable {
+            echo "run when run is marked as unstable"
+        }
+        changed {
+            echo "runs on changed dont know dont care"
+        }
+    }
+}
