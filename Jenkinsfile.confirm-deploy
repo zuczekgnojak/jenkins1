@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Deploy - staging') {
+            steps {
+                echo "deploying to staging"
+                echo "running smoke tests"
+                echo "whatever"
+            }
+        }
+        stage("Confirm promote") {
+            steps {
+                input "do you want to promote dev to prod?"
+            }
+        }
+        stage("Deploy - production") {
+            steps {
+                echo "deploying to production"
+            }
+        }
+    }
+}
