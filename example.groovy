@@ -1,5 +1,5 @@
 def hello() {
-    echo "Hello from example.groovy"
+    println("hello from example.groovy")
 }
 
 return this
