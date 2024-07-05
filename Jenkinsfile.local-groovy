@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage("load library") {
+            steps {
+                code = load "example.groovy"
+            }
+        }
+        stage("use library") {
+            steps {
+                code.hello()
+            }
+        }
+    }
+}
