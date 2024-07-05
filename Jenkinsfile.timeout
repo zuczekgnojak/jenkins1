@@ -1,0 +1,25 @@
+pipeline {
+    agent none
+    stages {
+        stage('input') {
+            agent any
+            options {
+                timeout(time: 10, unit: 'SECONDS')
+            }
+            input {
+                message "Whats your name?"
+                ok "Submit"
+                parameters {
+                    string(defaultValue: "John", name: "FIRST_NAME", trim: true)
+                }
+            }
+            steps {
+                echo "Good morning, $FIRST_NAME"
+                sh '''
+                  hostname
+                  cat /etc/*release*
+                '''
+            }
+        }
+    }
+}
